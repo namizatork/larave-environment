@@ -2,9 +2,14 @@ name: PHP Coding Standards Fixer
 
 on:
   push:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
 
 jobs:
   php-cs-fixer:
+
     runs-on: ubuntu-latest
 
     defaults:
@@ -13,25 +18,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
-
-      - name: Prepare
-        run: |
-          wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.0.0/php-cs-fixer.phar -O php-cs-fixer
-          chmod a+x php-cs-fixer
-
       - name: OS Version
         run: cat /etc/os-release
-
       - name: PHP Version
         run: php -v
-
+      - name: Composer Install PHP CS Fixer
+        run: |
+          composer require --dev friendsofphp/php-cs-fixer
       - name: PHP CS Fixer Version
-        run: php php-cs-fixer --version
-
+        run: ./vendor/bin/php-cs-fixer --version
       - name: PHP CS Fixer Run
-        run: php php-cs-fixer fix --diff -vvv --dry-run
+        run: ./vendor/bin/php-cs-fixer fix --diff -vvv --dry-run

@@ -1,0 +1,33 @@
+name: PHP Static Analysis
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  larastan:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: laravel
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+      - name: OS Version
+        run: cat /etc/os-release
+      - name: PHP Version
+        run: php -v
+      - name: Composer Install Larastan
+        run: |
+          composer require --dev nunomaduro/larastan
+      - name: PHP Analyse
+        run: php ./vendor/bin/phpstan analyze --memory-limit=2G
