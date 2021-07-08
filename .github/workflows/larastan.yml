@@ -2,9 +2,8 @@ name: PHP Static Analysis
 
 on:
   push:
-    branches:
-      - '**'
-      - '!master'
+    branches_ignore:
+      - maseter
   pull_request:
     branches:
       - master
