@@ -3,13 +3,12 @@ name: PHP Static Analysis
 on:
   push:
     branches:
-      - '**'
-      - '!master'
-      - '!pull_request'
-  pull_request:
-    branches:
       - master
-    types: [closed]
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   larastan:
