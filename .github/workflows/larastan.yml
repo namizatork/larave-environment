@@ -28,8 +28,10 @@ jobs:
           php-version: '7.4'
       - name: OS Version
         run: cat /etc/os-release
-      - name: PHP Version
-        run: php -v
+      - name: PHP, Composer Version
+        run: |
+          php --version
+          composer --version
       - name: Composer Install Larastan
         run: |
           composer require --dev nunomaduro/larastan
