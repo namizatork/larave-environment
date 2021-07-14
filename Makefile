@@ -16,7 +16,7 @@ create-project:
 install-recommend-packages:
 	docker-compose exec app composer require --dev nunomaduro/larastan
 	docker-compose exec app composer require --dev bamarni/composer-bin-plugin
-	docker-compose exec app composer bin tools require friendsofphp/php-cs-fixer
+	docker-compose exec app composer require --dev friendsofphp/php-cs-fixer
 remove-recommend-packages:
 	docker-compose exec app composer remove --dev nunomaduro/larastan
 	docker-compose exec app composer remove --dev bamarni/composer-bin-plugin
@@ -78,7 +78,7 @@ tinker:
 	docker-compose exec app php artisan tinker
 test:
 	docker-compose exec app php artisan test
-stan:
+analyze:
 	docker-compose exec app ./vendor/bin/phpstan analyze --memory-limit=2G
 cs-dry-run:
 	docker-compose exec app ./vendor/bin/php-cs-fixer fix -v --diff --dry-run
