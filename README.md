@@ -26,7 +26,7 @@ http://localhost
 ### app container
 
 - Base image
-  - [php](https://hub.docker.com/_/php):7.4-fpm
+  - [php](https://hub.docker.com/_/php):8.0-fpm
   - [composer](https://hub.docker.com/_/composer):2.0
 
 ### web container
