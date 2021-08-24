@@ -4,13 +4,18 @@
 
 Building Laravel environment
 
+## Documents
+
+- [コーディングルール](document/coding-standards.md)
+- [ツールの説明](document/tools.md)
+
 ## Usage
 
 ```bash
 $ git clone git@github.com:namizatork/laravel-environment.git
 $ cd docker-laravel
-$ make create-project # Install the latest Laravel project
-$ make install-recommend-packages # Optional
+$ make create-project
+$ make install-recommend-packages
 ```
 
 http://localhost
