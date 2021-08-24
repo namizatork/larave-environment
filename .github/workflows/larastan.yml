@@ -24,7 +24,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.0'
       - name: OS Version
         run: cat /etc/os-release
       - name: PHP, Composer Version
@@ -33,6 +33,6 @@ jobs:
           composer --version
       - name: Composer Install Larastan
         run: |
-          composer require --dev nunomaduro/larastan
+          composer require --dev nunomaduro/larastan=0.7.9
       - name: PHP Analyse
         run: php ./vendor/bin/phpstan analyze --memory-limit=2G
